@@ -5,11 +5,13 @@ import com.yiren.common.Utils.StringUtils;
 import com.yiren.exception.AlgoException;
 import com.yiren.exception.Error;
 
+import java.lang.reflect.Array;
 import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.function.Supplier;
 
 
 /**
@@ -81,6 +83,9 @@ public final class Generator {
     //验证参数的完整性
     private static void validateParameter(Object min, Object max, int size, Class<?> type) {
 
+        if (min == null || max == null)
+            throw new AlgoException(Error.PARAMETER,"min or max is null !");
+
         if (StringUtils.isEmpty(String.valueOf(min)) || StringUtils.isEmpty(String.valueOf(max)) || type == null)
             throw new NullPointerException();
 
@@ -136,6 +141,23 @@ public final class Generator {
     //me too  :)
     public static <T> T aArray(Object min, Object max, int size, Class<? extends T> type) {
         return randomArrayGenerator(min, max, size, type);
+    }
+
+    @SuppressWarnings("unchecked")
+    public static <T> T[] aCustomizedArray(int size, Class<? extends T[]> clazz, Supplier<T> supplier) {
+        if (clazz == null || supplier == null || size < 0)
+            throw new AlgoException(Error.PARAMETER,"fuck u!!");
+
+        T[] array;
+        try {
+            array = (T[]) Array.newInstance(Class.forName(getBaseTypeName(clazz)), size);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        for (int i = 0; i < size; i++) {
+            array[i] = supplier.get();
+        }
+        return array;
     }
 
     @SuppressWarnings("rawtypes")

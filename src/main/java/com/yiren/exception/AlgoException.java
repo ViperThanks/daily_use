@@ -14,7 +14,7 @@ public class AlgoException extends RuntimeException {
     }
 
     public AlgoException(Error error,String cause){
-        super("occurred a " + error.name().toLowerCase() + " error \n -> because : " + error.name().toLowerCase() + " " + cause);
+        super("occurred a " + error.name().toLowerCase() + " error -> because : " + error.name().toLowerCase() + " " + cause);
     }
 
 
