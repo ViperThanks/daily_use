@@ -1,7 +1,7 @@
 package com.yiren.algo;
 
 import com.yiren.generator.Convertor;
-import com.yiren.generator.Generator;
+import com.yiren.generator.ArrayGenerator;
 
 /**
  * author  : wl
@@ -34,21 +34,21 @@ public class AlgoUtils {
     }
 
     /**
-     * 基于   {@linkplain Generator#aArray(int)} 封装的方法
+     * 基于   {@linkplain ArrayGenerator#aArray(int)} 封装的方法
      *
      * @param size 数组长度
      * @return 返回 长度为 size 的 随机  (interface -> {@link java.util.concurrent.ThreadLocalRandom}) int 数组
      */
     public static int[] getIntArr(int size) {
-        return Convertor.Integers2ints(Generator.aArray(size));
+        return Convertor.Integers2ints(ArrayGenerator.aArray(size));
 
     }
 
     public static int[] getIntArr(int max, int size) {
-        return Convertor.Integers2ints(Generator.aArray(max, size));
+        return Convertor.Integers2ints(ArrayGenerator.aArray(max, size));
     }
 
     public static int[] getIntArr(int min, int max, int size) {
-        return Convertor.Integers2ints(Generator.aArray(min, max, size));
+        return Convertor.Integers2ints(ArrayGenerator.aArray(min, max, size));
     }
 }

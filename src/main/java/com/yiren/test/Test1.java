@@ -1,21 +1,10 @@
 package com.yiren.test;
 
-import com.github.javafaker.Faker;
 import com.yiren.algo.AlgoUtils;
-import com.yiren.common.Interfaces.Consequence;
-import com.yiren.common.Result;
-import com.yiren.exception.AlgoException;
-import com.yiren.exception.Error;
-import com.yiren.generator.Generator;
 import com.yiren.interview.class_loading_sequence.ClassLoadingSequence;
 import org.junit.jupiter.api.Test;
 
-import javax.management.remote.JMXAddressable;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 
 /**
  * author  : wl

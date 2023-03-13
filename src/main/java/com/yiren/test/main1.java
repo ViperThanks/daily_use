@@ -1,6 +1,6 @@
 package com.yiren.test;
 
-import com.yiren.generator.Generator;
+import com.yiren.generator.ArrayGenerator;
 
 import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
@@ -15,9 +15,14 @@ public class main1 {
 
     static int n;
     public static void main(String[] args) {
-        Integer[] integers = Generator.aCustomizedArray(10, Integer[].class, () -> ThreadLocalRandom.current().nextInt(100));
-        System.out.println(Arrays.toString(integers));
-        String[] strings = Generator.aCustomizedArray(100, String[].class, () -> "hello");
-        System.out.println(Arrays.toString(strings));
+
+        Integer[] array = ArrayGenerator.aCustomizedArray(10, Integer[].class,
+                () -> ThreadLocalRandom.current().nextInt(10)
+        );
+        System.out.println("array : \n" + Arrays.toString(array));
+        Double[] doubles = ArrayGenerator.aArray(Double[].class);
+        System.out.println("doubles : \n" + Arrays.toString(doubles));
+        System.out.println("Generator.aArray() : \n" + Arrays.toString(ArrayGenerator.aArray()));
+
     }
 }

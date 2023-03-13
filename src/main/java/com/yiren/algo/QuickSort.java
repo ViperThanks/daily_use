@@ -1,7 +1,5 @@
 package com.yiren.algo;
 
-import com.yiren.generator.Generator;
-
 import java.util.Arrays;
 
 /**
